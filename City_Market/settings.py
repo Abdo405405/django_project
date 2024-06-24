@@ -32,17 +32,15 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split()
 
 
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:8000",
-#     "http://localhost:8158",  # Include your frontend origin if different
-#     "https://1b49-156-221-184-188.ngrok-free.app",
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+    "http://localhost:8158",  # Include your frontend origin if different
+]
 
-# CSRF_TRUSTED_ORIGINS = [
-#     "https://1b49-156-221-184-188.ngrok-free.app",
-#     "http://localhost:8000",
-#     "http://localhost:8158",  # Include your frontend origin if different
-# ]
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8000",
+    "http://localhost:8158",  # Include your frontend origin if different
+]
 # Application definition
 INSTALLED_APPS = [
     'jazzmin',
