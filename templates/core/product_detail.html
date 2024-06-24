@@ -1,0 +1,75 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %}Product Details{% endblock %}
+{% block content %}  
+   <div class="product-details">
+    <div class="container">
+      <div class="row row-details">
+        <div class="col-lg-6 box-1">
+         <div class="product-imgs-slider">
+           <div class="img-display">
+            {%if product.image %}
+             <img  src="{{product.image.url}}" alt=""> 
+             {%endif%}
+           </div>
+           <div class="imgs-select">
+            {%if images %}
+            {%for image in images %}
+             <button class="">
+               <img src="{{image}}" alt="">
+             </button>
+             {%endfor%}
+             {%endif%}
+           </div>
+         </div>
+       </div>
+        <div class="col-lg-6 box-2">
+         <div class="product-content">
+           <h2 class="product-title">{{product.title}}</h2>
+           <a href="#" class="product-link">headphones store</a>
+           <div class="product-rating">
+             <i class="fas fa-star"></i>
+             <i class="fas fa-star"></i>
+             <i class="fas fa-star"></i>
+             <i class="fas fa-star-half-alt"></i>
+             <i class="far fa-star"></i>
+             <span>4.7(21)</span>
+           </div>
+   
+           <div class="product-price">
+             <p class="last-price">Old Price: <span>{{product.old_price}}</span></p>
+             <p class="new-price">New Price: <span>{{product.price}}</span></p>
+           </div>
+            <div class="actions-buttons">
+             <button class="nav-btn">Add to Cart</button>
+             <button class="nav-btn">buy</button>
+             <button class="favorite-btn"><i class="fas fa-heart"></i></button>
+           </div>
+           <div class="product-detail">
+             <h2> Description : </h2>
+             <p>{{product.description}}</p>
+             <ul>
+               <li>Color: <span>{{product.color}}</span></li>
+               {%if product.instock%}
+               <li>Available: <span>in stock</span></li>
+               {%endif%}
+               {%if not product.instock%}
+               <li> <font style="color: red;">Not Available</font></li>
+               {%endif%}
+               <li>Category: <span>{{product.category.title}}</span></li>
+               <li>Shipping Area: <span>All over the world</span></li>
+               {%if product.Shipping_Fee == 0.00 %}
+               <li>Shipping Fee: <span>Free</span></li>
+               {%endif%}
+               {%if product.Shipping_Fee%}
+               <li>Shipping Fee: <span>{{product.Shipping_Fee}} $</span></li>
+               {%endif%}
+             </ul>
+           </div>
+          </div>
+       </div>
+       </div>
+     </div>
+     </div>
+{% endblock %} 
+  

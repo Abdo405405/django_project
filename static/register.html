@@ -1,0 +1,129 @@
+<!DOCTPY html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>register | Page  </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="imgs/" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+
+      <!-- Bootstrap stylesheet -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--Font Awesome Icons-->
+    <link href="css/all.min.css" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link href="css/main.css" rel="stylesheet">
+   
+  </head>
+  <body class="register-body">
+    <form class="register-form" novalidate>
+       <h3 class="head">Sign Up</h3>
+      <div class="register-box">
+        
+      <div class="name-fields info">
+        <div class="fname">
+        <label for="first-name">First Name</label>
+        <input autofocus id="first-name" name="first-name" class="fields" type="text" placeholder="First name...">
+         <div data-field="first-name" class="error-masge">
+            <i class="fas fa-exclamation-circle"></i>
+            Enter your first name.
+        </div>
+       </div>
+        <div class="lname">
+       <label  for="last-name">Last Name</label>
+       <input id="last-name" class="fields" type="text" placeholder="Last name...">
+        <div data-field="last-name" class="error-masge">
+            <i class="fas fa-exclamation-circle"></i>
+            Enter your last name.
+        </div>
+        </div>
+       </div>
+      <div class="user-fields info">
+        <div class="user-email">
+           <label for="user-email">Your Email</label>
+           <div class="email-box field-box">
+            <input id="user-email" class="fields" type="email" placeholder="Enter your email...">
+            <i class="fa-regular fa-envelope"></i>
+          </div>
+           <div data-field = "user-email" class="error-masge">
+            <i class="fas fa-exclamation-circle"></i>
+               Enter vaild email .
+           </div>
+          </div>
+        <div class="user-account">
+           <label for="user-name">User Name</label>
+           <input id="user-name" class="fields" type="text" placeholder="Create user name...">
+            <div data-field ="user-name"class="error-masge">
+            <i class="fas fa-exclamation-circle"></i>
+              Enter your user name.
+           </div>
+          </div>
+       </div>
+       
+      <div class="pass-fields info">
+       <div class="set-pass">
+          <label for="new-password">Password</label>
+          <div class="password-box field-box">
+          <input id="new-password" name="new-password"class="fields" type="password" placeholder="Set new password...">
+           <i id="pass-toggle-btn" class="fa-regular fa-eye-slash"></i>
+          </div>
+          <div data-field = "new-password" class="error-masge">
+            <i class="fas fa-exclamation-circle"></i>
+             Please enter atleast 8 charatcer with number, symbol, small and
+             capital letter.
+        </div>
+      </div>
+       <div class="conf-pass">
+         <label for="confirm-pass">Confirm Password</label>
+          <div class="confirm-box field-box">
+          <input id="confirm-pass" name="confirm-pass" class="fields" type="password" placeholder="Write password again...">
+           <i id="confirm-toggle-btn" class="fa-regular fa-eye-slash"></i>
+          </div>
+          <div data-field = "confirm-pass" class="error-masge">
+            <i class="fas fa-exclamation-circle"></i>
+             Password don't match
+           </div>
+        </div>
+        </div>
+      <div class="info-fields info">
+       <div class="user-birth">
+           <label for="birth-field">Your Birthdate</label>
+           <div class="birth-date-box field-box">
+           <input id="birth-field" name="birth-field"class="fields" type="date" >
+           <i class="fas fa-calendar"></i>
+           </div>
+           <div data-field = "birth-field" class="error-masge">
+            <i class="fas fa-exclamation-circle"></i>
+               Enter your birthdate .
+           </div>
+       </div>
+       <div class="user-gender">
+        <label for="date">Your Gender</label>
+        <select id="gender" name="gender" class="fields">
+          <optgroup label="Select Your Gender"></optgroup>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        <div data-field ="gender" class="error-masge">
+            <i class="fas fa-exclamation-circle"></i>
+               select your gender .
+          </div>
+      </div>
+       </div>
+       </div>
+      <button class="regst-btn" type="submit">Sign Up</button> 
+       <a class="form-back-home" href="main.html"><i class="fa-solid fa-arrow-left"></i></a>
+     </form> 
+     <script src="js_code/regster_vaild.js "></script>
+  </body>
+</html>
+<!-- <i class="fa-regular fa-eye-slash"></i>
+<i class="fa-regular fa-eye"></i>
+
+<i class="fa-regular fa-calendar"></i> -->

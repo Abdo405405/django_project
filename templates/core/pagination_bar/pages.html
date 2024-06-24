@@ -1,0 +1,22 @@
+{%for product in products %}
+<div class="col-md-4">
+    <figure class="card card-product-grid">
+        <div class="img-wrap"> 
+            <span class="badge badge-danger"> NEW </span>
+                            <img src="{{product.image.url}}" class="img-fluid">
+            <a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
+        </div> 
+        <figcaption class="info-wrap">
+            <div class="fix-height">
+                <a href="#" class="title">{{product.title}}</a>
+                <div class="price-wrap mt-2">
+                    <span class="price">{{product.price}}</span>
+                    <del class="price-old">{{product.old_price}}</del>
+                </div> 
+            </div>
+            <a href="{{product.get_absolute_url}}" class="btn btn-block btn-primary">more details </a>
+        </figcaption>
+    </figure>
+</div>
+{%endfor%}
+

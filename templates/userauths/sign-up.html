@@ -1,0 +1,155 @@
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>register | Page  </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="x-icon" href="{% static 'imgs/icon/icon2.png' %}">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+
+      <!-- Bootstrap stylesheet -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!--Font Awesome Icons-->
+    <link href="{% static 'css/all.min.css' %}" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <!-- <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script> -->
+    <script src="{% static 'js_code/htmx.min.js' %}"></script>
+  </head>
+  <body class="register-body">
+    <form class="register-form" novalidate method="post" action="{% url 'userauths:sign-up'%}" >
+        {% csrf_token %}
+        <h3 class="head">Sign Up</h3>
+        <div class="register-box">
+        <div class="name-fields info" >
+          <div class="fname">
+          <label for="first-name">First Names</label>
+          {{Register_form.first_name}}
+          {%if Register_form.first_name.errors %}
+          {%for error in Register_form.first_name.errors %}
+          <div style="color: red;" id="hide_error_messages1" >
+              <i class="fas fa-exclamation-circle"></i>
+               {{error}}
+          </div>
+          {%endfor%}
+           {%endif%}
+         </div>
+          <div class="lname">
+         <label  for="last-name">Last Name</label>
+          {{Register_form.last_name}}
+          {% if Register_form.last_name.errors %}
+          {%for error in Register_form.last_name.errors %}
+          <div data-field="last-name" style="color: red;"  id="hide_error_messages2" >
+              <i class="fas fa-exclamation-circle"></i>
+              {{error}}
+          </div>
+          {%endfor%}
+          {%endif%}
+          </div>
+         </div>
+        <div class="user-fields info">
+          <div class="user-email">
+             <label for="user-email">Your Email</label>
+             <div class="email-box field-box"  >
+                {{Register_form.email}}
+              <i class="fa-regular fa-envelope"></i>
+            </div>
+            {% if Register_form.email.errors %}
+            {%for error in Register_form.email.errors %}
+             <div style="color: red;"  id="hide_error_messages3">
+              <i class="fas fa-exclamation-circle"></i>
+              {{error}}
+             </div>
+             {%endfor%}
+             {%endif%}
+            </div>
+          <div class="user-account">
+             <label for="user-name">User Name</label>
+             {{Register_form.username}}
+             {%if Register_form.username.errors %}
+             {%for error in Register_form.username.errors %}
+             <div style="color: red;"  id="hide_error_messages4">
+            <i class="fas fa-exclamation-circle"></i>
+            {{error}}
+             </div>
+             {%endfor%}
+             {%endif%}
+            </div>
+         </div>
+         
+        <div class="pass-fields info">
+         <div class="set-pass">
+            <label for="new-password">Password</label>
+            <div class="password-box field-box"  >
+                {{Register_form.password}}
+             <i id="pass-toggle-btn" class="fa-regular fa-eye-slash"></i>
+            </div>
+            {%if Register_form.password.errors%}
+            {% for  error in Register_form.password.errors%}
+            <div style="color: red;"  id="hide_error_messages5">
+              <i class="fas fa-exclamation-circle"></i>
+              {{error}}
+          </div>
+          {%endfor%}
+          {%endif%}
+        </div>
+         <div class="conf-pass">
+           <label for="confirm-pass">Confirm Password</label>
+            <div class="confirm-box field-box" >
+                {{Register_form.confirm_password}}
+             <!-- <i id="confirm-toggle-btn" class="fa-regular fa-eye-slash"></i> -->
+            </div>
+            {%if Register_form.confirm_password.errors %}
+            {%for error in Register_form.confirm_password.errors %}
+            <div  style="color: red;"  id="hide_error_messages6">  <!-- div of error message -->
+              <i class="fas fa-exclamation-circle"></i>
+              {{ error }}
+            </div>
+            {%endfor%}
+             {%endif%}
+             
+          </div>
+          </div>
+        <div class="info-fields info">
+         <div class="user-birth">
+             <label for="birth-field">Your Birthdate</label>
+             <div class="birth-date-box field-box">
+                {{Register_form.birthday}}
+             <i class="fas fa-calendar"></i>
+             </div>
+             {%if Register_form.birthday.errors %}
+             {%for error in Register_form.birthday.errors %}
+             <div  style="color: red;"  id="hide_error_messages7">
+              <i class="fas fa-exclamation-circle"></i>
+                {{error}}
+             </div>
+             {%endfor%}
+             {%endif%}
+         </div>
+         <div class="user-gender">
+          <label for="date"> Gender</label>
+          {{Register_form.gender}}
+          {%if Register_form.gender.errors%}
+           <div style="color: red;"  id="hide_error_messages8">
+              <i class="fas fa-exclamation-circle"></i>
+                Select Gender
+            </div>
+            {%endif%}
+        </div>
+         </div>
+         </div>
+        <button class="regst-btn" type="submit">Sign Up</button> 
+       <a class="form-back-home" href={% url 'core:main' %}><i class="fa-solid fa-arrow-left"></i></a>   
+     </form> 
+  </body>
+</html>
+<!-- <i class="fa-regular fa-eye-slash"></i>
+<i class="fa-regular fa-eye"></i>
+
+<i class="fa-regular fa-calendar"></i> -->

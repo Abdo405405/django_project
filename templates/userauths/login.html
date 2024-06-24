@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login | Page  </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'imgs/favicon.ico' %}">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+      <!-- Bootstrap stylesheet -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!--Font Awesome Icons-->
+    <link href="{% static 'css/all.min.css' %}" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <script src="{% static 'js_code/htmx.min.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body class="login-body">
+   <form class="login-form" novalidate method="POST"  action="{% url 'userauths:log-in'%}">
+    {% csrf_token %}
+        <h3 class="head">Login</h3>
+        <div>
+          <label for="user"> Email</label>
+          <input autofocus class="email-input" id="user" type="text" placeholder="Your Email..." name="email" hx-get="/hide_error_messages/" hx-target="#error-messge1" hx-trigger="input">
+          <div class="email-empty error-masge" id="error-messge1">
+            <i class="fas fa-exclamation-circle" ></i>
+            Email field is required.
+        </div>
+        </div>
+        <div>
+       <label for="password">password</label>
+       <input class="pass-input" id="password" type="password" placeholder="Your password..." name="password" hx-get="/hide_error_messages/" hx-target="#error-messge2" hx-trigger="input">
+        <div class="pass-empty error-masge" id="error-messge2">
+          <i class="fas fa-exclamation-circle"></i>
+          password field is required.
+        </div>
+        </div>
+        <div class="wrong-message" id="error-messge1">
+          {% if messages %}
+              <ul>
+                <i class="fas fa-exclamation-circle" style="color: red;"></i>
+                  {% for message in messages %}
+                  {% if message.tags == "warning" %}
+                  <!-- <div {% if message.tags == "warning" %} class="alert alert-danger" {% endif %}> -->
+                          <strong style="color: red ; ">user name or password is wrong.</strong>
+                      <!-- </div> -->
+                      {% endif %}
+                  {% endfor %}
+              </ul>
+          {% endif %}
+       </div>
+       <script>
+        setTimeout(function() {
+          $(".wrong-message").alert('close');
+      }, 4000); // 20 seconds in milliseconds
+      </script>
+       <button class="btn-log">Login</button>
+      <div class="regst-box">
+       <p class="question">You Don't Have An Account?</p>
+       <a href={% url 'userauths:sign-up' %} class="regst-link">Sign Up</a>
+      </div>
+      <a class="form-back-home" href="main.html"><i class="fa-solid fa-arrow-left"></i></a>
+     </form> 
+     
+       <!-- Bootstrap Script File -->
+        <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+           <!-- Font Awesome Script File -->
+        <script src="{% static 'js_code/all.min.js' %}"></script>
+           <!-- Main Script File -->
+        <script src="{% static 'js_code/login_vaild.js' %}"></script>
+  </body>
+</html>

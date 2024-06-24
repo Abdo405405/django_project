@@ -1,0 +1,204 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %}City Market{% endblock %}
+{%block login_message %}
+  {% if messages %}
+  {% for message in messages %}
+  {% if message.tags == "success" %}
+  <div class="alert alert-success">
+    {{message}}
+  </div>
+  {% endif %}
+  {% endfor %}
+{% endif %}
+<script>
+  // Show success message after 20 seconds
+  
+      setTimeout(function() {
+          $(".alert").alert('close');
+      }, 5000); // 20 seconds in milliseconds
+  
+</script><
+{%endblock%}
+<div id="tobar"> {%block tobar %}  
+  <!-- start tober -->
+  <nav class="tober navbar navbar-expand-lg">
+    <div class="container ">
+       <!--start search input-->
+       <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search For Items" aria-label="Search">
+        <button class="nav-btn" type="submit">Search</button>
+      </form>
+        <!--end search input-->
+        <div class="user-control">
+           <div class="box-bottom">
+            <button class="open-favo">
+               <i class="fa-regular fa-heart"></i>
+            </button>
+             Favorite
+            </div>
+            <div class="box-bottom">
+            <button class="open-cart">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </button>
+             Cart
+            </div>
+            <div class="box-bottom">
+             <button class="open-user">
+              <i class="fa-regular fa-user"></i>
+            </button>
+             You
+            </div>
+        </div>
+    </div>
+    </nav>
+  {%endblock%}</div>
+{% block content %}  
+<!-- content of page  -->
+   <div id="my-slider" class="hero carousel slide" data-bs-ride="carousel">
+   <div class="carousel-inner">
+    {% for Ad in advertisements %}
+    <div class="carousel-item active" >
+      <img src="{{Ad.image.url}}" class="d-block w-100 " alt="...">
+    </div>
+    {%endfor%}
+  </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#my-slider" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#my-slider" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+   </div> 
+    <!--end hero-->
+  
+    <!--start main-->
+     <!-- Start Categories -->
+    <div class="global-section" id="catego-section">
+      <h2 class="main-title">Categories</h2>
+        <div class="container">
+         <div class="categ-row row">
+          {%for category in categories%}
+          {% if not category.parent_category_id %}
+           <div class="box">
+            {%if category.image %}
+            <img src="{{ category.image.url }}">
+            {%endif%}
+            <div class="content">
+              <h3>{{category.title}}</h3>
+               <p class="description">{{category.description}} </p>
+              </div>
+              <div class="info">
+                <a href="{{category.get_absolute_url}}" >See All</a>
+                <i class="fas fa-long-arrow-alt-right"></i>
+              </div>
+           </div>
+        {%endif%}
+        {%endfor%} 
+        <div class="cont-btns">
+          <button class="pre-catego"><i class="fas fa-angle-left"></i></button>
+          <button class="nxt-catego"><i class="fas fa-angle-right"></i></button>
+          </div>
+      </div>
+    </div>
+    <!-- End Categories -->
+    
+     <!-- start events  -->
+    <div class="events" id="events">
+     <h2 class="main-title">Events</h2>
+      <div class="container">
+        <div class="info">
+          <div class="time">
+            <div class="unit">
+              <span>08</span>
+              <span>seconds</span>
+            </div>
+            <div class="unit">
+              <span>20</span>
+              <span>minutes</span>
+            </div>
+            <div class="unit">
+              <span>15</span>
+              <span>Hours</span>
+            </div>
+            <div class="unit">
+              <span>55</span>
+              <span>days</span>
+            </div>
+          </div>
+          <h3 class="title">Our Events <span class="year">2024</span> </h3>
+          <p class="description">
+            Enter Your Email To Get Discount.
+          </p>
+        </div>
+        <div class="subsribe">
+          <form>
+            <input type="email"  placeholder="Enter Your Email">
+            <input type="submit">
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End events  -->
+    
+  <!-- Start new products -->
+  <div id="new-arrivals" class="new-arrivals  products-section">
+    <h2 class="main-title">New Arrivals</h2>
+       <div class="container">
+        <div  class="new-row row">
+         <!--content will be here -->
+        </div>
+        <div class="cont-btns">
+        <button class="pre-btn-new"><i class="pre-btn-new fas fa-angle-left"></i></button>
+        <button class="nxt-btn-new"><i class="nxt-btn-new fas fa-angle-right"></i></button>
+          </div>
+          <a href="#" id="see-new" class="product-link">see all</a>
+      </div>
+   </div>
+    <!-- End new  products -->
+    
+  <!-- Start best seller -->
+   <div id="best-seller" class="best-seller products-section">
+    <h2 class="main-title">Best Seller</h2>
+       <div class="container">
+        <div class="best-row row">
+          
+        </div>
+        <div class="cont-btns">
+        <button class="pre-btn-bst"><i class="pre-btn-bst fas fa-angle-left"></i></button>
+        <button class="nxt-btn-bst"><i class="nxt-btn-bst fas fa-angle-right"></i></button>
+        </div>
+          <a href="#" id="see-best"class="product-link ">see all</a>
+      </div>
+   </div>
+    <!-- End best seller -->
+    
+     <!-- Start Services -->
+    <div class="services " id="services">
+      <h2 class="main-title">Services</h2>
+      <div class="container">
+        <div class="box">
+          <i class="fas fa-user-shield fa-4x"></i>
+          <h3>Security</h3>
+        </div>
+        <div class="box">
+          <i class="fas fa-shipping-fast fa-4x"></i>
+          <h3>Fast Shipping</h3>
+        </div>
+        <div class="box">
+          <i class="fas fa-map-marked-alt fa-4x"></i>
+          <h3>Across The Country</h3>
+        </div>
+        <div class="box">
+          <i class="fas fa-credit-card fa-4x"></i>
+          <h3>Payment Easy</h3>
+        </div>
+      </div>
+    </div>
+    <!-- End Services -->
+     
+    <!--end main-->
+    {% endblock %} 
+    

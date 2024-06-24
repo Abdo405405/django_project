@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Ecommerce | Wep | App </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="imgs/" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap stylesheet -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--Font Awesome Icons-->
+    <link href="css/all.min.css" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link href="css/main.css" rel="stylesheet">
+</head>
+  <body>
+  <!--Start Header -->
+  <header id="my-header" class="bg-light">
+  <!-- Start Navbar -->
+      <nav class="main-nav navbar navbar-expand-lg  px-4 px-lg-5 py-lg-3 ">
+         <div class="container position-relative p-0">
+                <a href="main.html" class="navbar-brand p-0">
+                    <h4 class=" m-0"><i class="fas fa-shop me-2"></i>City Market</h4>
+                </a>
+                <i data-bs-toggle="collapse" data-bs-target="#my-navbar" class="navbar-toggler fas fa-bars "></i>
+                <div class="collapse navbar-collapse" id="my-navbar">
+                    <div class="navbar-nav ms-auto py-0 pe-4">
+                        <a href="main.html" class="nav-item nav-link p-lg-3 ">Home</a>
+                        <div class="drop nav-item dropdown ">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Categories</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="#" class="dropdown-item">Electronics</a>
+                                <a href="#" class="dropdown-item">Home Devices</a>
+                                <a href="#" class="dropdown-item">Furnitures</a>
+                                <a href="#" class="dropdown-item">Books</a>
+                                <a href="#" class="dropdown-item">Clothes</a>
+                                <a href="#" class="dropdown-item">Games & Toys</a>
+                            </div>  
+                        </div>
+                        <div class="drop nav-item dropdown ">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Products</a>
+                            <div class=" dropdown-menu m-0">
+                                <a href="#new-arrivals" class="dropdown-item">New Arrivals</a>
+                                <a href="#best-seller" class="dropdown-item">Best Seller</a>
+                            </div>  
+                        </div>
+                        <div class="drop nav-item dropdown ">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class=" dropdown-menu m-0">
+                                <a href="" class="dropdown-item">About Us</a>
+                                <a href="" class="dropdown-item">Contact</a>
+                            </div>  
+                        </div>
+                        <div class="drop nav-item dropdown ">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Langauge</a>
+                            <div class=" dropdown-menu m-0">
+                                <a href="" class="dropdown-item">Ar</a>
+                                <a href="" class="dropdown-item">En</a>
+                            </div>  
+                        </div>
+                    </div>
+                    <a href="login.html" class="nav-btn log-in">Log In</a>
+                     <!--start search input-->
+                     <form class="mob-search" role="search">
+                      <input class="form-control me-2" type="search" placeholder="Search For Items" aria-label="Search">
+                      <button class="nav-btn" type="submit">Search</button>
+                    </form>
+                    <!--end search input-->
+                </div>
+               </div>
+            </nav>
+   <!-- End Navbar -->
+   <!-- start tober -->
+    <nav class=" tober navbar navbar-expand-lg">
+  <div class="container ">
+       <!--start search input-->
+       <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search For Items" aria-label="Search">
+        <button class="nav-btn" type="submit">Search</button>
+      </form>
+        <!--end search input-->
+        <div class="favorite-cart">
+          <button class="open-favo tober-btn ">
+          <i class="open-favo favorite fas fa-heart"></i>
+          </button>
+          <button class="tober-btn cart-btn">
+           <i class="basket fas fa-basket-shopping"></i>
+          </button>
+          <button class="tober-btn">
+          <i class="user fas fa-user-circle"></i>
+          </button>
+        </div>
+    </div>
+  </div>
+</nav>
+   <!-- end tober -->
+    </header>
+    <!-- End header -->
+      
+   <div class="product-details">
+       <div class="container">
+         <div class="row row-details">
+           <div class="col-lg-6 box-1">
+            <div class="product-imgs-slider">
+              <div class="img-display">
+                <img  src="imgs/accessories.jpg" alt="">
+              </div>
+              <div class="imgs-select">
+                <button class="">
+                  <img src="imgs/accessories.jpg" alt="">
+                </button>
+                <button class="">
+                  <img src="imgs/accessories.jpg" alt="">
+                </button>
+                <button class="">
+                  <img src="imgs/accessories.jpg" alt="">
+                </button>
+                <button class="">
+                  <img src="imgs/accessories.jpg" alt="">
+                </button>
+              </div>
+            </div>
+          </div>
+           <div class="col-lg-6 box-2">
+            <div class="product-content">
+              <h2 class="product-title">headphone p47 bluetooth</h2>
+              <a href="#" class="product-link">headphones store</a>
+              <div class="product-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span>4.7(21)</span>
+              </div>
+      
+              <div class="product-price">
+                <p class="last-price">Old Price: <span>$257.00</span></p>
+                <p class="new-price">New Price: <span>$249.00</span></p>
+              </div>
+               <div class="actions-buttons">
+                <button class="nav-btn">Add to Cart</button>
+                <button class="nav-btn">buy</button>
+                <button class="favorite-btn"><i class="fas fa-heart"></i></button>
+              </div>
+              <div class="product-detail">
+                <h2>Product Description : </h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo eveniet veniam tempora fuga tenetur placeat sapiente architecto illum soluta consequuntur, aspernatur quidem at sequi ipsa!</p>
+                <ul>
+                  <li>Color: <span>Black</span></li>
+                  <li>Available: <span>in stock</span></li>
+                  <li>Category: <span>Shoes</span></li>
+                  <li>Shipping Area: <span>All over the world</span></li>
+                  <li>Shipping Fee: <span>Free</span></li>
+                </ul>
+              </div>
+             </div>
+          </div>
+          </div>
+        </div>
+        </div>
+     <!-- Start Services -->
+    <div class="services " id="services">
+      <h2 class="main-title">Services</h2>
+      <div class="container">
+        <div class="box">
+          <i class="fas fa-user-shield fa-4x"></i>
+          <h3>Security</h3>
+        </div>
+        <div class="box">
+          <i class="fas fa-shipping-fast fa-4x"></i>
+          <h3>Fast Shipping</h3>
+        </div>
+        <div class="box">
+          <i class="fas fa-map-marked-alt fa-4x"></i>
+          <h3>Across The Country</h3>
+        </div>
+        <div class="box">
+          <i class="fas fa-credit-card fa-4x"></i>
+          <h3>Payment Easy</h3>
+        </div>
+      </div>
+    </div>
+    <!-- End Services -->
+    
+    
+    <!--end main-->
+    
+    <!-- Footer Start -->
+    <footer class="container-fluid bg-light text-dark pt-3">
+        <div class="row px-xl-5 pt-5">
+            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                <a href="" class="text-decoration-none">
+                    <h4><i class="fas fa-shop me-2"></i>City Market</h4>
+                </a>
+                <p>Dolore erat dolor sit lorem vero amet. Sed sit lorem magna, ipsum no sit erat lorem et magna ipsum dolore amet erat.</p>
+            </div>
+            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>123 Street, New York, USA</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i><a href="mailto:abfo@gmail.com">CityMarket@gmail.com</a></p>
+                <p class="mb-2"><i class="fa-solid fa-headset text-primary me-3"></i><a href="tel:0125790976655">+20 01034567890</a></p>
+            </div>
+            <div class="col-lg-2 col-md-12">
+                        <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-primary mb-2 text-decoration-none " href="index.html"><i class="fa fa-angle-double-right me-2 "></i>Home</a>
+                            <a class="text-primary mb-2 text-decoration-none " href="detail.html"><i class="fa fa-angle-double-right me-2"></i>About Us</a>
+                            <a class="text-primary mb-2 text-decoration-none " href="contact.html"><i class="fa fa-angle-double-right me-2"></i>Contact</a>
+                            <a class="text-primary mb-2 text-decoration-none " href="cart.html"><i class="fa fa-angle-double-right me-2"></i>Shipping</a>
+                            <a class="text-primary mb-2 text-decoration-none " href="shop.html"><i class="fa fa-angle-double-right me-2"></i>Payment</a>
+                        </div>
+                    </div>
+            <div class="col-lg-2 col-md-12">
+                        <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-primary mb-2 text-decoration-none " href="index.html"><i class="fa fa-angle-double-right me-2 "></i>Home</a>
+                            <a class="text-primary mb-2 text-decoration-none " href="detail.html"><i class="fa fa-angle-double-right me-2"></i>About Us</a>
+                            <a class="text-primary mb-2 text-decoration-none " href="contact.html"><i class="fa fa-angle-double-right me-2"></i>Contact</a>
+                            <a class="text-primary mb-2 text-decoration-none " href="cart.html"><i class="fa fa-angle-double-right me-2"></i>Shipping</a>
+                            <a class="text-primary mb-2 text-decoration-none " href="shop.html"><i class="fa fa-angle-double-right me-2"></i>Payment</a>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="row border-top border-white bg-light mx-xl-5 py-4 text-center">
+            <div class="col-md-12 px-xl-0">
+                <p class="mb-md-0 text-center text-md-left text-primary">
+                  2024
+                    &copy; <a href="https//:CityMarket.com"class="text-dark font-weight-semi-bold" href="#">City Market</a>. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+    
+      <!--start nav in bottom-->
+        <div class="nav-btom">
+          <div class="icons container">
+            <a href="main.html" class="p-lg-3 "><i class="fas fa-home"></i>Home</a>
+            <a class="open-favo count favorite p-lg-3 "><i class="fas fa-heart open-favo"></i>Favorite</a>
+            <a class="cart-btn count basket p-lg-3"><i class=" fas fa-basket-shopping"></i>Cart</a>
+            <a class="p-lg-3 "><i class="fas fa-user-circle"></i>You</a>
+        </div>
+        </div>
+      <!--end nav in bottom-->
+      
+      <!--start back-to-top-btn -->
+      <a class="back-btn"><i class="fas fa-angle-double-up"></i></a>
+      <!--end back-to-top-btn -->
+      
+      <!--start cart -->
+      <div class="cart-side side">
+        <h3 class="main-title cart-heading">Your Cart</h3>
+        <div class="shop-list">
+          <div class="item">
+             <div class="context">
+            <div class="cart-image">
+            <img src="imgs/accessories.jpg">
+            </div>
+            <div class="product-name">
+               headphone p47
+            </div>
+            </div>
+            <div class="item-functions">
+             <div class="total-p-item">
+               200$
+             </div>
+             <div class="quantity">
+               <button class="decr-btn">-</button>
+               <input type="number" value="1">
+               <button class="incr-btn">+</button>
+             </div>
+             <button class="del-cart"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </div>
+          <div class="item">
+             <div class="context">
+            <div class="cart-image">
+            <img src="imgs/accessories.jpg">
+            </div>
+            <div class="product-name">
+               headphone p47
+            </div>
+            </div>
+            <div class="item-functions">
+             <div class="total-p-item">
+               200$
+             </div>
+             <div class="quantity">
+               <button class="decr-btn">-</button>
+               <input type="number" value="1">
+               <button class="incr-btn">+</button>
+             </div>
+             <button class="del-cart"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </div>
+          </div>
+        <div class="summary">
+           <h3>Order Summary</h3>
+          <div class="total">
+            <p>Total : </p>
+            <p class="total-price">200$</p>
+          </div>
+          <button class="check-btn nav-btn"><a href="checkout.html">Check Out</a> </button>
+        </div>
+       <button class="close-cart">×</button>
+      </div>
+      <!--end cart -->
+      <div class="favorite-side side">
+        <h3 class="main-title ">Favorites</h3>
+        <div class="favor-list">
+           <div class="item">
+             <div class="context">
+            <div class="favorite-image">
+            <img src="imgs/accessories.jpg">
+            </div>
+            <div class="product-name">
+               headphone p47
+            </div>
+            </div>
+              <button class="del-favorite"><i class="fa-solid fa-trash"></i></button>
+          </div>
+           <div class="item">
+             <div class="context">
+            <div class="favorite-image">
+            <img src="imgs/accessories.jpg">
+            </div>
+            <div class="product-name">
+               headphone p47
+            </div>
+            </div>
+              <button class="del-favorite"><i class="fa-solid fa-trash"></i></button>
+          </div>
+           <div class="item">
+             <div class="context">
+            <div class="favorite-image">
+            <img src="imgs/accessories.jpg">
+            </div>
+            <div class="product-name">
+               headphone p47
+            </div>
+            </div>
+              <button class="del-favorite"><i class="fa-solid fa-trash"></i></button>
+          </div>
+          </div>
+       <button class="close-favorite">×</button>
+      </div>
+      
+   <!-- Bootstrap Script File -->
+<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+   <!-- Font Awesome Script File -->
+<script src="js_code/all.min.js"></script>
+   <!-- Main Script File -->
+<script src="js_code/main.js"></script>
+<script src="js_code/products.js "></script>
+</body>
+</html>

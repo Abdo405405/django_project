@@ -1,0 +1,6 @@
+<li class="page-item {% if page1 == 1 %} disabled {% endif %} "><a class="page-link"hx-target="#target" hx-swap="innerHTML" hx-get="/api/page_display/?category_id={{category_id}}&value1={{page1}}&value2={{page2}}&value3={{page3}}&num_pages={{num_pages}}&action=0" href="#">Previous</a></li>
+<a class="page-link"  href="#" hx-get="/api/next_page/?category_id={{category_id}}&value={{page1}}" hx-trigger="click" hx-target="#dd" hx-swap="innerHTML">{{page1}}</a>
+<a class="page-link"  href="#" hx-get="/api/next_page/?category_id={{category_id}}&value={{page2}}" hx-trigger="click" hx-target="#dd" hx-swap="innerHTML">{{page2}}</a>
+<a class="page-link"  href="#" hx-get="/api/next_page/?category_id={{category_id}}&value={{page3}}" hx-trigger="click" hx-target="#dd" hx-swap="innerHTML">{{page3}}</a>
+<li class="page-item {% if page3 == num_pages %} disabled {% endif %} "><a class="page-link" hx-target="#target" hx-swap="innerHTML" hx-get="/api/page_display/?category_id={{category_id}}&value1={{page1}}&value2={{page2}}&value3={{page3}}&action=1&num_pages={{num_pages}}" href="#">more</a></li>
+

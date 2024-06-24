@@ -1,0 +1,74 @@
+{
+  "products" : [
+    {
+        "id": 1,
+        "name":" headphone p47 ",
+        "price": 200,
+        "image": "imgs/accessories.jpg",
+        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit"
+        },
+    {
+        "id": 2,
+        "name":" headphone p47 ",
+        "price": 200,
+        "image": "imgs/accessories.jpg",
+        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit"
+        },
+    {
+        "id": 3,
+        "name":" headphone p47 ",
+        "price": 200,
+        "image": "imgs/accessories.jpg",
+        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit"
+        },
+    {
+        "id": 4,
+        "name":" headphone p47 ",
+        "price": 200,
+        "image": "imgs/accessories.jpg",
+        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit"
+        },
+    {
+        "id": 5,
+        "name":" headphone p47 ",
+        "price": 200,
+        "image": "imgs/accessories.jpg",
+        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit"
+        },
+    {
+        "id": 6,
+        "name":" headphone p47 ",
+        "price": 200,
+        "image": "imgs/accessories.jpg",
+        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit"
+        },
+    {
+        "id": 7,
+        "name":" headphone p47 ",
+        "price": 200,
+        "image": "imgs/accessories.jpg",
+        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit"
+        },
+    {
+        "id": 8,
+        "name":" headphone p47 ",
+        "price": 200,
+        "image": "imgs/accessories.jpg",
+        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit"
+        },
+    {
+        "id": 9,
+        "name":" headphone p47 ",
+        "price": 200,
+        "image": "imgs/accessories.jpg",
+        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit"
+        },
+    {
+        "id": 10,
+        "name":" headphone p47 ",
+        "price": 200,
+        "image": "imgs/accessories.jpg",
+        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit"
+        }
+]
+}

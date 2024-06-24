@@ -1,0 +1,64 @@
+<!DOCTPY html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login | Page  </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="imgs/" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+
+      <!-- Bootstrap stylesheet -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--Font Awesome Icons-->
+    <link href="css/all.min.css" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+  <body class="login-body">
+   <form class="login-form" novalidate>
+        <h3 class="head">Login</h3>
+        <div>
+          <label for="user"> User Name</label>
+          <input autofocus class="user-input" id="user" type="text" placeholder="Your User Name...">
+          <div class="user-empty error-masge">
+            <i class="fas fa-exclamation-circle"></i>
+            user field is required.
+        </div>
+        </div>
+        <div>
+       <label for="password">password</label>
+       <input class="pass-input" id="password" type="password" placeholder="Your password...">
+        <div class="pass-empty error-masge">
+          <i class="fas fa-exclamation-circle"></i>
+          password field is required.
+        </div>
+        </div>
+       <div class="wrong-message error-masge">
+          <i class="fas fa-exclamation-circle"></i>
+          user name or password is wrong.
+       </div>
+       <button class="btn-log">Login</button>
+      <div class="regst-box">
+       <p class="question">You Don't Have An Account?</p>
+       <a href="register.html" class="regst-link">Sign Up</a>
+      </div>
+      <a class="form-back-home" href="main.html"><i class="fa-solid fa-arrow-left"></i></a>
+     </form> 
+      
+     <div class="success-message">
+        You Logged In Successfully.
+     </div>
+       <!-- Bootstrap Script File -->
+        <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+           <!-- Font Awesome Script File -->
+        <script src="js_code/all.min.js"></script>
+           <!-- Main Script File -->
+        <script src="js_code/login_vaild.js"></script>
+  </body>
+</html>
