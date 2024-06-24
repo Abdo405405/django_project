@@ -6,7 +6,7 @@ class User(AbstractUser):
     username = models.CharField(max_length=100,unique=True)
     birthday=models.DateField(blank=True,null=True)
     gender=models.CharField(choices=GENDER,null=True , blank=True,max_length=10)
-    is_vendor=models.BooleanField(default=False)
+    is_vendor=models.BooleanField(null=True)
     first_name=models.CharField(blank=True, max_length=150, verbose_name='first name' , default="Missing")
     last_name=models.CharField(blank=True, max_length=150, verbose_name='last name' , default="Missing")
     USERNAME_FIELD = 'email'

@@ -125,7 +125,7 @@ def create_vendor_or_customer(sender, instance, created, **kwargs):
     if created:
         if instance.is_vendor:
             Vendor.objects.create(user=instance,default_address=Address.objects.create())
-        elif not instance.is_vendor and not instance.is_superuser:
+        elif  instance.is_vendor==False and not instance.is_superuser :
             Customer.objects.create(user=instance,default_address=Address.objects.create())
 
 @receiver(post_delete, sender=Vendor)

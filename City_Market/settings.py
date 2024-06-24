@@ -28,7 +28,7 @@ BASE_DIR =os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 
-# ALLOWED_HOSTS = ['127.0.0.1', '0c89-156-221-176-111.ngrok-free.app']
+# ALLOWED_HOSTS = ['127.0.0.1']
 
 ###########################################
 SECRET_KEY = os.environ.get("SECRET_KEY")
