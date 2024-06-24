@@ -10,7 +10,7 @@ class SignUpSerializer (serializers.ModelSerializer):
     last_name = serializers.CharField(required=True, allow_blank=False,allow_null=False)
     gender = serializers.ChoiceField(choices=GENDER,required=True, allow_blank=False,allow_null=False)
     birthday = serializers.DateField(required=True)
-    is_vendor=serializers.BooleanField(required=True)
+    is_vendor=serializers.BooleanField(required=False)
     class Meta : 
         model=User 
         fields =["username", "email", "password", "first_name", "last_name", "gender", "birthday","is_vendor"]

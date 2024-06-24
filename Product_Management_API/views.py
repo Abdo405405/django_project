@@ -126,16 +126,19 @@ def product_by_id (request,pk):
 @permission_classes([IsAuthenticated])
 def create_product(request):
     try:
+            vendor = Vendor.objects.get(user = request.user) 
             data = request.data.copy()  # Create a mutable copy of request data
             product_status = data.get("product_status", None)
+            category = data.get("category", None)
+            data["vendor"] = vendor.id
+            if not category : 
+                return Response({"category":"This field is required"})
             if product_status:
                 data["product_status"] = product_status.lower()  # Convert to lowercase
             
-            # Attempt to get the vendor associated with the authenticated user
-            vendor = Vendor.objects.get(user=request.user)
-            data["vendor"] = vendor.id
             category_name = data.get("category")  # Corrected from "caegory" to "category_name"
-            category = get_object_or_404(Category, title__icontains=category_name)  # Use icontains for partial matching
+            category = Category.objects.get(title__icontains=category_name)  # Use icontains for partial matching
+
             data["category"] = category.id
             if "subcategory" in data:
              sub_category_name = data.get("subcategory")
@@ -151,6 +154,9 @@ def create_product(request):
      
     except Vendor.DoesNotExist:
         return Response({"error": "This vendor does not exist"}, status=status.HTTP_400_BAD_REQUEST)
+    except Category.DoesNotExist:
+        return Response({"Error":"This category does not exist "})
+
       
 @api_view(["PATCH"])
 @permission_classes([IsAuthenticated])

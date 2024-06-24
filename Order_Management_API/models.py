@@ -22,8 +22,8 @@ class PaymentStatus (models.TextChoices):
     PAID="Paid"
     UNPAID="Unpaid"
 class PaymentMode (models.TextChoices): 
-    COD="COD"
-    CARD="CARD"
+    COD="Cod"
+    CARD="Card"
 class OrderStatus(models.TextChoices):
     PROCESSING="Processing"
     SHIPPED="Shipped"

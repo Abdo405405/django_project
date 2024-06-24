@@ -23,6 +23,14 @@ BASE_DIR =os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = 'django-insecure-xe!j4v^vc*i174iq12(p^i&9ee*^&_@%rt!rj2o2qi$x1heh-d'
+
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
+
+# ALLOWED_HOSTS = ['127.0.0.1', '0c89-156-221-176-111.ngrok-free.app']
+
+###########################################
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -30,19 +38,8 @@ DEBUG = os.environ.get("DEBUG","False").lower()=="true"
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split()
 
+######################################
 
-
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:8000",
-#     "http://localhost:8158",  # Include your frontend origin if different
-#     "https://1b49-156-221-184-188.ngrok-free.app",
-# ]
-
-# CSRF_TRUSTED_ORIGINS = [
-#     "https://1b49-156-221-184-188.ngrok-free.app",
-#     "http://localhost:8000",
-#     "http://localhost:8158",  # Include your frontend origin if different
-# ]
 # Application definition
 INSTALLED_APPS = [
     'jazzmin',
@@ -71,9 +68,18 @@ CSRF_TRUSTED_ORIGINS = [
     "https://0c89-156-221-176-111.ngrok-free.app",
     "http://127.0.0.1:8000",
     "http://localhost",       # Another possible localhost origin
+    "http://localhost:8158",
 
 ]
 
+# CORS_ALLOWED_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://0c89-156-221-176-111.ngrok-free.app",
+    "http://localhost:8000",  # Your frontend origin
+    "http://localhost",       # Another possible localhost origin
+    "null",                   # For file:// origin in local development
+    "http://localhost:8158",
+]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -86,13 +92,6 @@ MIDDLEWARE = [
     "django_htmx.middleware.HtmxMiddleware",
 ]
 
-# CORS_ALLOWED_ALL_ORIGINS = True
-CORS_ALLOWED_ORIGINS = [
-    "https://0c89-156-221-176-111.ngrok-free.app",
-    "http://localhost:8000",  # Your frontend origin
-    "http://localhost",       # Another possible localhost origin
-    "null",                   # For file:// origin in local development
-]
 
 
 
@@ -138,9 +137,10 @@ DATABASES = {
         }  
     }
 }
+# DATABASES['default'] = dj_database_url.parse("postgresql://city_market_user:fYJHJVKQULjzOYx8LXujlK6DHOKsoRGq@dpg-cpsj74d6l47c73e6ldm0-a.oregon-postgres.render.com/city_market")
+
 database_url =os.environ.get("DATABASES_URL")
 DATABASES['default'] = dj_database_url.parse(database_url)
-
 
 REST_FRAMEWORK = {
     
@@ -152,7 +152,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=90),
     "ROTATE_REFRESH_TOKENS": True,
     "ROTATE_ACCESS_TOKENS": True,
