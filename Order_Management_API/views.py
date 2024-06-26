@@ -7,7 +7,7 @@ from Payment_Management_API.models import   User_Payment_Method
 from rest_framework import status  # status of creation user 
 from .serializer import OrderSerializer
 from rest_framework.decorators import permission_classes 
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated , IsAdminUser
 
 # Create your views here.
 @permission_classes(IsAuthenticated)
@@ -93,9 +93,10 @@ def single_order (request ,pk):
     except CartOrder.DoesNotExist:
          return Response({"Error":"This order does not Exist"},status=status.HTTP_404_NOT_FOUND)
 
-@permission_classes(IsAuthenticated)   
 @api_view(["PUT"])
+@permission_classes([IsAdminUser,IsAuthenticated])   
 def change_order_status (request ,pk):
+    
     try:
       order = CartOrder.objects.get(id = pk )
       order_staus = request.data.get("order_status")
@@ -107,8 +108,9 @@ def change_order_status (request ,pk):
       return Response ({"order":serializer.data})
     except CartOrder.DoesNotExist:
          return Response({"Error":"This order does not Exist"},status=status.HTTP_404_NOT_FOUND)
-
+    
 @api_view(["DELETE"])
+@permission_classes([IsAuthenticated])   
 def delete_order (request ,pk):
     try:
       order = CartOrder.objects.get(id = pk )

@@ -81,10 +81,8 @@ class Vendor (models.Model):
             return "No Image Available"
     def delete(self, *args, **kwargs):
         # Delete all associated addresses
-        self.address.clear()  # Removes all associated addresses from the ManyToManyField
-        
-        self.default_address.delete()  # Delete the default address
-        print("111111")
+        self.addresses.clear()  # Removes all associated addresses from the ManyToManyField
+        # self.default_address.delete()  # Delete the default address
         super().delete(*args, **kwargs)
     def __str__(self):
         return self.user.first_name + " " + self.user.last_name
@@ -127,6 +125,7 @@ def create_vendor_or_customer(sender, instance, created, **kwargs):
             Vendor.objects.create(user=instance,default_address=Address.objects.create())
         elif  instance.is_vendor==False and not instance.is_superuser :
             Customer.objects.create(user=instance,default_address=Address.objects.create())
+            
 
 @receiver(post_delete, sender=Vendor)
 def delete_related_addresses(sender, instance, **kwargs):
@@ -141,3 +140,21 @@ def delete_related_addresses(sender, instance, **kwargs):
     instance.addresses.clear()  # Removes all associated addresses from the ManyToManyField
     if instance.default_address:
         instance.default_address.delete()  # Delete the default address
+
+
+@receiver(post_save , sender=User)
+def ChangeStatusOfUser (sender , instance , **kwargs):  #  change vendor to customer or  opposate when change is_vendor field in User model 
+    print(instance.is_vendor)
+    if instance.is_vendor == True : 
+        customer = Customer.objects.filter(user=instance).first()
+        if customer : 
+            customer.delete()
+            Vendor.objects.create(user=instance,default_address=Address.objects.create())
+    elif instance.is_vendor == False:
+        vendor = Vendor.objects.filter(user=instance).first()
+        if vendor : 
+            vendor.delete()
+            Customer.objects.create(user=instance,default_address=Address.objects.create())
+
+
+

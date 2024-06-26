@@ -2,9 +2,9 @@ from django.shortcuts import render ,get_object_or_404
 from rest_framework.decorators import api_view  , permission_classes
 from rest_framework import status
 from rest_framework.response import Response
-from .models import Product , Category ,ProductFeedback
+from .models import Product , Category ,ProductFeedback ,Wishlist
 from Accounts.models import Vendor 
-from .serializers import ProductSerializer , UpdateProductSerializer ,CreateProductSerializer, CategorySerializer ,CreateCategorySerializer , UpdateCategorySerializer , GetFeedbacksOfProduct
+from .serializers import ProductSerializer , UpdateProductSerializer ,CreateProductSerializer, CategorySerializer ,CreateCategorySerializer , UpdateCategorySerializer , GetFeedbacksOfProduct,WishlistSerializer
 from . import filters
 from rest_framework.pagination import PageNumberPagination
 from math import ceil
@@ -14,6 +14,7 @@ from rest_framework.exceptions import AuthenticationFailed
 from django.db.models import Avg
 from Accounts.models import Customer
 from rest_framework.exceptions import ValidationError
+from rest_framework import generics
 
 # Create your views here.
 def product_detail ( request , pk ,slug) :
@@ -300,9 +301,10 @@ def create_or_update_feedback(request,pk):
     product=Product.objects.get(pk=pk)     
     feedback = product.feedback.filter(customer=customer) #get only feedback related to this product from registred customer
     data=request.data.copy()
-    customer_rating = int(data.get("rating" , None))
-    print(type(customer_rating))
-    customer_comment = data.get("comment" , None)
+    customer_rating = int(data.get("rating" , 0))
+    customer_comment = data.get("comment" , 0)
+    if not (customer_comment and customer_rating) : 
+        return Response({"Error":"One of these fields is requierd [comment or rating ]"})
     if not (customer_rating >=0 and customer_rating<=5) :
         return Response({"Error":" Reating Should be from 1 to 5"})
     elif feedback.exists():                           # if it exist then update it 
@@ -348,9 +350,46 @@ def delete_feedback(request,pk):
     except Product.DoesNotExist:
         return Response({"Error":" This Product does not exist"})
 
-        
+# Based on class view 
+class WishlistRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Wishlist.objects.all()
+    serializer_class = WishlistSerializer
+    permission_classes = [IsAuthenticated]
+    def get_object(self):
+        queryset = Wishlist.objects.filter(customer__user=self.request.user)
+        wishlist_item_id = queryset.first().id
+        obj = queryset.get(id=wishlist_item_id)
+        return obj
+    def get_queryset(self):
+        return Wishlist.objects.filter(customer__user=self.request.user)
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return Response({"detail": "Wishlist  deleted successfully!"}, status=status.HTTP_204_NO_CONTENT)
 
-        
-     
-        
 
+
+# class WishlistListCreateAPIView(generics.GenericAPIView):
+#     queryset = Wishlist.objects.all()
+#     serializer_class = WishlistSerializer
+#     permission_classes = [IsAuthenticated]
+
+#     def get_queryset(self):
+#         return Wishlist.objects.filter(customer__user=self.request.user)
+
+#     def perform_create(self, serializer):
+#         customer = Customer.objects.get(user=self.request.user)
+#         serializer.save(customer=customer)
+
+
+
+# perform_create Method
+# Purpose: The perform_create method is used in views that handle creating new instances of a model. It provides a place to perform additional actions before or after a new instance is saved.
+# Usage: Typically used in views derived from CreateAPIView or ListCreateAPIView.
+# When Called: It is called after the serializer has validated the input data and before the new instance is saved to the database.
+
+
+# get_object Method
+# Purpose: The get_object method is used to retrieve a single instance of a model based on the request parameters. It allows you to customize how an object is fetched from the database.
+# Usage: Typically used in views derived from RetrieveAPIView, UpdateAPIView, DestroyAPIView, or RetrieveUpdateDestroyAPIView.
+# When Called: It is called to fetch the object before performing actions like retrieve, update, or delete.

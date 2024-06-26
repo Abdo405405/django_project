@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product ,Category ,ProductFeedback , Customer
+from .models import Product ,Category ,ProductFeedback , Customer ,Wishlist
 from django.shortcuts import get_object_or_404
 from django.utils import text
 from rest_framework.exceptions import ValidationError
@@ -136,3 +136,9 @@ class GetFeedbacksOfProduct (serializers.ModelSerializer):
     def get_customer (self,obj):
         customer=obj.customer.user.first_name +" "+ obj.customer.user.last_name
         return customer  
+    
+class WishlistSerializer (serializers.ModelSerializer):
+    class Meta : 
+        model=Wishlist
+        fields=["product"]
+

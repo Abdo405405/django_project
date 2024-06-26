@@ -10,6 +10,8 @@ path ( "customer_info/" , views.customer_info , name="customer_info"),
 path ( "vendor/profile/update/" , views.update_vendor , name="update_vendor"),
 path ( "customer/profile/update/" , views.update_customer , name="update_customer"),
 path ( "delete_account/" , views.delete_account , name="delete_account"),
+path ( "send_mail/" , views.send_mail , name="delete_account"),
+
 
 
 

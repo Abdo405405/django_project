@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework.decorators import api_view , permission_classes
 from rest_framework.response import Response
 from userauths.models import User 
@@ -7,11 +6,8 @@ from django.contrib.auth.hashers import make_password
 from rest_framework import status  # status of creation user 
 from .serializer import SignUpSerializer , AdminInfoSerializer , UpdateVendorSerializer , UpdateCustomerSerializer,VendorInfoSerializer , CustomerInfoSerializer
 from rest_framework.permissions import IsAuthenticated  
-from django.shortcuts import get_object_or_404
 from rest_framework.exceptions import ValidationError
-from django.http import Http404
-from rest_framework_simplejwt.tokens import RefreshToken
-# Create your views here.
+from django.core.mail import send_mail as django_send_mail
 @api_view(["POST"])
 def register(request):
     data=request.data.copy()
@@ -144,4 +140,27 @@ def delete_account(request):
              return Response({"Error":"This Account does not exist"})
     
 
+@api_view(["POST"])
+def send_mail(request):
+    data = request.data
+    message = data.get("message", None)
+    name = data.get("name", None)
+    from_mail = data.get("from_mail", None)
+
+    if not message or not name or not from_mail:
+        return Response({"error": "Please provide message, name, and from_mail fields"}, status=400)
+
+    try:
+        django_send_mail(
+            subject=f"Message from {name}",  # subject
+            message=message,                 # message
+            from_email=from_mail,            # from mail
+            recipient_list=['abdulrahman73098@gmail.com'],  # to mail
+        )
+        return Response({"success": "Email sent successfully"})
+    except Exception as e:
+        return Response({"error": str(e)}, status=500)
+
+    
+    
 

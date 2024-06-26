@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import jazzmin
 from pathlib import Path
 import os 
 from datetime import timedelta
@@ -23,20 +23,20 @@ BASE_DIR =os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-xe!j4v^vc*i174iq12(p^i&9ee*^&_@%rt!rj2o2qi$x1heh-d'
-
-# # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-
-# ALLOWED_HOSTS = ['127.0.0.1']
-
-###########################################
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = 'django-insecure-xe!j4v^vc*i174iq12(p^i&9ee*^&_@%rt!rj2o2qi$x1heh-d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG","False").lower()=="true"
+DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split()
+ALLOWED_HOSTS = ['127.0.0.1', '0c89-156-221-176-111.ngrok-free.app']
+
+###########################################
+# SECRET_KEY = os.environ.get("SECRET_KEY")
+
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = os.environ.get("DEBUG","False").lower()=="true"
+
+# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split()
 
 ######################################
 
@@ -73,13 +73,13 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 # CORS_ALLOWED_ALL_ORIGINS = True
-CORS_ALLOWED_ORIGINS = [
-    "https://0c89-156-221-176-111.ngrok-free.app",
-    "http://localhost:8000",  # Your frontend origin
-    "http://localhost",       # Another possible localhost origin
-    "null",                   # For file:// origin in local development
-    "http://localhost:8158",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "https://0c89-156-221-176-111.ngrok-free.app",
+#     "http://localhost:8000",  # Your frontend origin
+#     "http://localhost",       # Another possible localhost origin
+#     "null",                   # For file:// origin in local development
+#     "http://localhost:8158",
+# ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -139,8 +139,8 @@ DATABASES = {
 }
 # DATABASES['default'] = dj_database_url.parse("postgresql://city_market_user:fYJHJVKQULjzOYx8LXujlK6DHOKsoRGq@dpg-cpsj74d6l47c73e6ldm0-a.oregon-postgres.render.com/city_market")
 
-database_url =os.environ.get("DATABASES_URL")
-DATABASES['default'] = dj_database_url.parse(database_url)
+# database_url =os.environ.get("DATABASES_URL")
+# DATABASES['default'] = dj_database_url.parse(database_url)
 
 REST_FRAMEWORK = {
     
@@ -224,6 +224,20 @@ JAZZMIN_SETTINGS = {
 }
 AUTH_USER_MODEL = 'userauths.User'   # to include custome usermodel instead default one 
 
-# CORS_ALLOW_ALL_ORIGINS = True  # Allow all origins for CORS
+CORS_ALLOW_ALL_ORIGINS = True  # Allow all origins for CORS
+
+# Email settings  
+# settings.py
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+
+
+# EMAIL_USE_SSL=True
+
+
 
 

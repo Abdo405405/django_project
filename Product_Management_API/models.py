@@ -152,3 +152,8 @@ def set_product_url(sender, instance, created,**kwargs):
         instance.slug = slug
         instance.url = instance.get_absolute_url() 
         instance.save()
+
+@receiver (post_save,sender=Customer)
+def CreateWishlist (sender , instance ,created,**kwargs) : 
+    if created : 
+        Wishlist.objects.create(customer=instance)

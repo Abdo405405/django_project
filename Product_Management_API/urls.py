@@ -7,8 +7,8 @@ urlpatterns = [
     path("product/<str:pk>/", views.product_by_id, name="display_all_products"),
     path("product<str:pk>/<slug:slug>/", views.product_detail, name="product_detail"),
     path("create_product/", views.create_product, name="create_product"),
-    path("delete_product<str:pk>/", views.delete_product, name="delete_product"),
-    path("update_product<str:pk>/", views.update_product, name="update_product"),
+    path("delete_product/<str:pk>/", views.delete_product, name="delete_product"),
+    path("update_product/<str:pk>/", views.update_product, name="update_product"),
     
 
     path("all_categories/",views.categories_display_all,name="categories_display_all"),
@@ -23,7 +23,7 @@ urlpatterns = [
     path("delete_feedback/product/<str:pk>/", views.delete_feedback, name="delete_feedback"),
 
 
-    
+    path('wishlist/', views.WishlistRetrieveUpdateDestroyAPIView.as_view(), name='wishlist-detail'),
     
     
     path("next_page/", views.page_next, name="page_next"),

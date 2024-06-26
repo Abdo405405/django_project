@@ -15,10 +15,17 @@ class ProductsFilter(django_filters.FilterSet):
     color=django_filters.CharFilter(field_name="color",lookup_expr="icontains" )
     title=django_filters.CharFilter(field_name="title",lookup_expr="iexact" )
     vendor=django_filters.CharFilter(field_name="vendor",lookup_expr="exact" )
-
+    sort_by = django_filters.OrderingFilter(
+        fields=(
+            ('created_at', 'created_at'),
+        ),
+        field_labels={
+            'created_at': 'Created Date'
+        }
+    )
     class Meta: 
         model = Product 
-        fields = ["min_year","max_year","instock","product_status","Shipping_Fee","min_price","max_price","color","title","subcategory_name","subcategory_id","category_name","category_id","vendor","is_new","rating"]
+        fields = ["min_year","max_year","instock","product_status","Shipping_Fee","min_price","max_price","color","title","subcategory_name","subcategory_id","category_name","category_id","vendor","is_new","rating" ,"sort_by"]
     def filter_queryset(self, queryset):
         queryset = super().filter_queryset(queryset) # you ensure that any default behavior or processing defined in the parent class is applied to the queryset before you perform any additional filtering or modifications in the child class.
         # Check if any field has an empty value
@@ -54,6 +61,8 @@ class FeedbackFilter (django_filters.FilterSet):
      updated_at_max_month= django_filters.NumberFilter(field_name="updated_at__month" , lookup_expr="lte")
      updated_at_min_day= django_filters.NumberFilter(field_name="updated_at__day" , lookup_expr="gte")
      updated_at_max_day= django_filters.NumberFilter(field_name="updated_at__day" , lookup_expr="lte")
+
+
      class Meta:
           model=ProductFeedback
           fields=["rating","created_at","updated_at","created_at_min_year","created_at_max_year","created_at_min_month",
