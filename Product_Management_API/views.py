@@ -198,7 +198,8 @@ def delete_product(request,pk):
 @api_view(["GET"])
 # @permission_classes([IsAuthenticated])
 def categories_display_all(request):
-     if request.user.is_superuser:
+    #  if request.user.is_superuser:
+    try:
       Categories = Category.objects.all()
       max_category_per_page = 10
       count= Categories.count()
@@ -214,18 +215,23 @@ def categories_display_all(request):
            "categories":serializer.data
       }
       return Response(context,status=status.HTTP_202_ACCEPTED)
-     else: 
-          return Response({"Error":"UNAUTHORIZED USER ","AUTHORIZED USERS ":" Only Superusers"}, status=status.HTTP_401_UNAUTHORIZED)
+    except Category.DoesNotExist:
+        return Response({"Error":"There are no categories added yet"})
+    #  else: 
+        #   return Response({"Error":"UNAUTHORIZED USER ","AUTHORIZED USERS ":" Only Superusers"}, status=status.HTTP_401_UNAUTHORIZED)
      
 @api_view(["GET"])
 # @permission_classes([IsAuthenticated])
 def Category_by_id(request,pk):
-     if request.user.is_superuser:
-      category = get_object_or_404(Category,pk=pk)
+    #  if request.user.is_superuser:
+    try:  
+      category = Category.objects.get(pk=pk)
       serializer=CategorySerializer(category,many=False)
       return Response({"category":serializer.data},status=status.HTTP_202_ACCEPTED)
-     else: 
-          return Response({"Error":"UNAUTHORIZED USER ","AUTHORIZED USERS ":" Only Superusers"}, status=status.HTTP_401_UNAUTHORIZED)
+    except Category.DoesNotExist:
+        return Response ({"Error":"This Category Does not exist"})
+    #  else: 
+        #   return Response({"Error":"UNAUTHORIZED USER ","AUTHORIZED USERS ":" Only Superusers"}, status=status.HTTP_401_UNAUTHORIZED)
 
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
