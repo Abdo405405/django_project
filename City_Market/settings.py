@@ -23,20 +23,20 @@ BASE_DIR =os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-xe!j4v^vc*i174iq12(p^i&9ee*^&_@%rt!rj2o2qi$x1heh-d'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['127.0.0.1', '0c89-156-221-176-111.ngrok-free.app']
-
-###########################################
-# SECRET_KEY = os.environ.get("SECRET_KEY")
+# SECRET_KEY = 'django-insecure-xe!j4v^vc*i174iq12(p^i&9ee*^&_@%rt!rj2o2qi$x1heh-d'
 
 # # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.environ.get("DEBUG","False").lower()=="true"
+# DEBUG = True
 
-# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split()
+# ALLOWED_HOSTS = ['127.0.0.1', '0c89-156-221-176-111.ngrok-free.app']
+
+###########################################
+SECRET_KEY = os.environ.get("SECRET_KEY")
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.environ.get("DEBUG","False").lower()=="true"
+
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split()
 
 ######################################
 
@@ -139,8 +139,8 @@ DATABASES = {
 }
 # DATABASES['default'] = dj_database_url.parse("postgresql://city_market_user:fYJHJVKQULjzOYx8LXujlK6DHOKsoRGq@dpg-cpsj74d6l47c73e6ldm0-a.oregon-postgres.render.com/city_market")
 
-# database_url =os.environ.get("DATABASES_URL")
-# DATABASES['default'] = dj_database_url.parse(database_url)
+database_url =os.environ.get("DATABASES_URL")
+DATABASES['default'] = dj_database_url.parse(database_url)
 
 REST_FRAMEWORK = {
     
@@ -152,7 +152,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=20),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=90),
     "ROTATE_REFRESH_TOKENS": True,
     "ROTATE_ACCESS_TOKENS": True,
