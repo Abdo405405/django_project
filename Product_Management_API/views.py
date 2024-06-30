@@ -90,10 +90,10 @@ def page_display(request):
 @api_view(["GET"])
 # @permission_classes([IsAuthenticated])
 def products_display_all (request):
-     data = request.GET.copy()
-     if "category_name" in data :
-            if data["category_name"] =="all" : 
-                data.pop("category_name")
+     lst_data = list(data.keys())
+     for field  in lst_data:
+            if data[field] =="all" : 
+                data.pop(field)
      try:
         products = Product.activated_products.all().order_by("id")
         filter_set = filters.ProductsFilter(data , queryset=products)
