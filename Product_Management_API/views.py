@@ -90,9 +90,13 @@ def page_display(request):
 @api_view(["GET"])
 # @permission_classes([IsAuthenticated])
 def products_display_all (request):
+     data = request.GET.copy()
+     if "category_name" in data :
+            if data["category_name"] =="all" : 
+                data.pop("category_name")
      try:
         products = Product.activated_products.all().order_by("id")
-        filter_set = filters.ProductsFilter(request.GET , queryset=products)
+        filter_set = filters.ProductsFilter(data , queryset=products)
         count = filter_set.qs.count()
         max_products_per_page= 10 
         total_pages=ceil(count/max_products_per_page)
