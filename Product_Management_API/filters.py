@@ -13,7 +13,7 @@ class ProductsFilter(django_filters.FilterSet):
     max_year= django_filters.NumberFilter(field_name="created_at__year" , lookup_expr="lte")
     product_status=django_filters.ChoiceFilter(choices=STATUS,lookup_expr="iexact")
     color=django_filters.CharFilter(field_name="color",lookup_expr="icontains" )
-    title=django_filters.CharFilter(field_name="title",lookup_expr="iexact" )
+    title=django_filters.CharFilter(field_name="title",lookup_expr="icontains" )
     vendor=django_filters.CharFilter(field_name="vendor",lookup_expr="exact" )
     sort_by = django_filters.OrderingFilter(
         fields=(
