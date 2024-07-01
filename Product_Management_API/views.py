@@ -90,6 +90,7 @@ def page_display(request):
 @api_view(["GET"])
 # @permission_classes([IsAuthenticated])
 def products_display_all (request):
+     data=request.GET
      lst_data = list(data.keys())
      for field  in lst_data:
             if data[field] =="all" : 
