@@ -129,13 +129,28 @@ class UpdateCategorySerializer(serializers.ModelSerializer):
             return None
     
 class GetFeedbacksOfProduct (serializers.ModelSerializer):
-    customer=serializers.SerializerMethodField()
+    customer = serializers.SerializerMethodField()
+    image = serializers.SerializerMethodField()
+    first_name = serializers.SerializerMethodField()
+    last_name = serializers.SerializerMethodField()
     class Meta : 
         model=ProductFeedback
-        exclude=["product"]
+        fields = ["comment", "rating", "created_at", "updated_at", "customer", "image","first_name","last_name" ]
     def get_customer (self,obj):
         customer=obj.customer.user.first_name +" "+ obj.customer.user.last_name
-        return customer  
+        return customer
+    def get_first_name (self,obj):
+        customer_first_name=obj.customer.user.first_name
+        return customer_first_name  
+    def get_last_name (self,obj):
+        customer_last_name=obj.customer.user.last_name
+        return customer_last_name    
+    def get_image (self , obj) : 
+        customer_image = obj.customer.image.url
+        if customer_image :
+            return customer_image
+        else :
+            return  "No Image is Avalible" 
     
 class WishlistSerializer (serializers.ModelSerializer):
     class Meta : 
